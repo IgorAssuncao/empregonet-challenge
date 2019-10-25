@@ -1,0 +1,26 @@
+version: '3'
+services:
+  api:
+    build: 
+      context: ./api
+    env_file: .env
+    expose:
+      - "3000"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    networks:
+      - "net"
+    command: "yarn start"
+
+  mongo:
+    image: mongo:4.2-bionic
+    ports:
+      - "27017:27017"
+    networks:
+      - "net"
+
+networks:
+  net:
+    driver: bridge
