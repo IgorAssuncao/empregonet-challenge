@@ -13,6 +13,11 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  curriculi: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'Curriculi'
+  },
 });
 
 export default mongoose.model('User', UserSchema);
