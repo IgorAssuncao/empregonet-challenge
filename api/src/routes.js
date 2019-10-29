@@ -9,5 +9,6 @@ routes.get('/', async (request, response) => {
 });
 
 routes.get('/users', UserController.list);
+routes.post('/users', UserController.create);
 
 export default routes;
