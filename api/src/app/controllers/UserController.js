@@ -5,7 +5,9 @@ import Curriculi from '../schemas/Curriculi';
 
 class UserController {
   async list(request, response) {
-    const users = await User.find({}, { __v: false });
+    const users = await User.find({}, { __v: false }).populate('curriculi', {
+      __v: false,
+    });
 
     if (!users) {
       return response.status(400).json({
