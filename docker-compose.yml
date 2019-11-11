@@ -8,9 +8,7 @@ services:
       - "3000"
     ports:
       - "3000:3000"
-    depends_on:
-      - mongo
-    networks:
+   networks:
       - "net"
     command: "yarn start"
 
@@ -20,6 +18,9 @@ services:
       - "27017:27017"
     networks:
       - "net"
+    volumes:
+      - "./data/db:/data/db"
+    command: "mongod --replSet mongo-set"
 
 networks:
   net:

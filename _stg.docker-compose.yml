@@ -11,18 +11,29 @@ services:
     volumes:
       - "./api/src:/app/node/src"
       - "./api/node_modules:/app/node/node_modules"
-    depends_on:
-      - mongo
     networks:
       - "net"
     command: "yarn dev"
 
-  mongo:
+  mongo1:
     image: mongo:4.2-bionic
     ports:
       - "27017:27017"
     networks:
       - "net"
+    volumes:
+      - "./data/db:/data/db"
+    command: "mongod --replSet mongo-set"
+
+  mongo2:
+    image: mongo:4.2-bionic
+    ports:
+      - "27018:27017"
+    networks:
+      - "net"
+    volumes:
+      - "./data/db2:/data/db"
+    command: "mongod --replSet mongo-set"
 
 networks:
   net:

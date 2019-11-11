@@ -24,7 +24,6 @@ describe('UserController', () => {
       });
 
       UserModel.populate = jest.fn().mockImplementation(function() {
-        this.data;
         return this.data;
       });
 

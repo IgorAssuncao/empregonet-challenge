@@ -19,4 +19,8 @@ const CurriculiSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.model('Curriculi', CurriculiSchema);
+const Curriculi = mongoose.model('Curriculi', CurriculiSchema);
+
+(async () => await Curriculi.createCollection())();
+
+export default Curriculi;

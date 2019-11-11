@@ -5,11 +5,14 @@ class Database {
     this.mongo();
   }
 
-  mongo() {
-    this.mongoConnection = mongoose.connect('mongodb://mongo/empregonet', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
+  async mongo() {
+    this.mongoConnection = await mongoose.connect(
+      'mongodb://mongo2/empregonet?replicaSet=mongo-set',
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }
+    );
   }
 }
 

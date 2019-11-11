@@ -16,8 +16,11 @@ const UserSchema = new mongoose.Schema({
   curriculi: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    ref: 'Curriculi'
+    ref: 'Curriculi',
   },
 });
 
-export default mongoose.model('User', UserSchema);
+const User = mongoose.model('User', UserSchema);
+(async () => await User.createCollection())();
+
+export default User;
